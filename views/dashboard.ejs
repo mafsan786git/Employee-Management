@@ -1,0 +1,86 @@
+
+<style> 
+    @media screen and (max-width:570px) {
+                .nav-link {
+                    width: 100%;
+                }
+            }
+    body{
+        height: 1000px;
+    }
+    .container
+    {
+        background-color: #cae8ca;
+
+    }
+    header
+    {
+        border: 1px solid black;
+        border-radius: 4px;
+        min-height: 95px;;
+        background-color: cadetblue;
+    }
+    .navbar-toggler{
+        border-color: green;
+        /* background-color: grey; */
+    }
+    /* .navbar{
+        background-color: grey;
+    } */
+    span
+    {
+    margin: 0px;
+    }
+    nav
+    {
+        border: 1px solid black;
+        border-radius: 4px;
+    }
+    .nav-link{
+        border: 1px solid #4CAF50;
+        border-radius: 4px;
+        background-color: darkslategray;
+        display:inline-block;
+    
+    }
+
+    .nav-link:hover {
+        background-color: #4CAF50;
+    }
+    
+</style>
+<div class="container-fluid shadow">
+        <header class="shadow">
+        <div class="container-fluid" style="margin-bottom: 0">
+          <div id="logo">LOGO</div>
+          <p >WEBSITE NAME</p>
+        </div>
+        </header>
+<!--     navigation bar-->
+        <nav class="navbar navbar-expand-sm mt-1 bg-dark navbar-dark shadow  sticky-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+             <span class="collapse navbar-collapse" id="collapsibleNavbar">
+               <ul class="navbar-nav shadow">
+                 <li class="nav-item"><a class="nav-link" href="/dashboard"><i class="fa fa-home fa-fw"></i>&nbsp;Home&nbsp;</a></li>
+                  <% if(user.table == 'user') { %>
+                    <li class="nav-item"><a class="nav-link" href="/user/profile"><i class="fa fa-user fa-fw"></i>&nbsp;Profile&nbsp;</a></li>
+                  <% }%>
+                  <% if(user.table == 'manager') { %>
+                    <li class="nav-item"><a class="nav-link" href="/manager/add"><i class="fa fa-user-plus fa-fw"></i>&nbsp;Add Employee&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/manager/employee">&nbsp;View Employee&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/manager/profile"><i class="fa fa-user fa-fw"></i>&nbsp;Profile&nbsp;</a></li>
+                  <% }%>
+                  <% if(user.table == 'admin') { %>
+                    <li class="nav-item"><a class="nav-link" href="/admin/add"><i class="fa fa-user-plus fa-fw"></i>&nbsp;Add Employee&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/controle"><i class="fa fa-universal-access fa-fw"></i>&nbsp;Controle&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/employee">&nbsp;View Employee&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/profile"><i class="fa fa-user fa-fw"></i>&nbsp;Profile&nbsp;</a></li>
+                  <% }%>
+                  <li class="nav-item"><a class="nav-link" href="/logout"><i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;Log Out&nbsp;</a></li>
+              </ul>
+            </span>
+        </nav>
+</div>
+

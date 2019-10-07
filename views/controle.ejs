@@ -1,0 +1,35 @@
+<% include dashboard.ejs %>
+
+<style>
+        @media screen and (min-width:600px) {
+            .container {
+                width: 55%;
+            }
+        }
+        .container{
+            position: relative;
+        }
+</style>
+
+<div class="container" style="border: solid black;">                                                
+        <hr>
+        <h4 class="form-text text-muted alert alert-danger">This is used for Assigning Employees to a Manager</h4>
+        <hr>
+        <% include ./partials/messages %>
+        <hr>
+        <form id="form_id" action="/admin/controle" name="myform" method="POST" class="was-validated">
+            <div class="form-group">
+                <label><strong>Email Of Manager</strong></label>
+                <input type="email" class="form-control form-control-sm" id="email" name="manageremail" placeholder="enter your email name" required>
+                <small id="emailhelp" class="form-text text-muted alert alert-info">Manager Email Should Be Given</small>
+            </div>
+            <div class="form-group">
+                    <label><strong>Email Of Employee</strong></label>
+                    <input type="email" class="form-control form-control-sm" id="email" name="useremail" placeholder="enter your email name" required>
+                    <small id="emailhelp" class="form-text text-muted alert alert-info">Employee Email Should Be Given</small>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="add" class="btn btn-primary" style="width: 100%">ASSIGN EMPLOYEE</button>
+            </div>
+        </form>
+</div>

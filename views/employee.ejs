@@ -1,0 +1,93 @@
+<% include dashboard.ejs %>
+
+<style>
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          width: 100%;
+          border: 1px solid #ddd;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+</style> 
+<div class="container">   
+    <div class="table-responsive" style="border: solid black; overflow-x:auto;">
+            <% include ./partials/messages %>
+        <% if (mng.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <!-- <th scope="col">Image</th> -->
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Gender</th>
+                        <% if (user.table == 'admin') {%>
+                        <th scope="col">Admin Name</th>
+                         <% }%>
+                         <% if (user.table == 'manager') {%>
+                        <th scope="col">Manager Name</th>
+                        <% }%>
+                        <!-- <th scope="col">Action</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <% mng.forEach((emp, index) => { %>
+                        <tr>
+                            <th scope="row"><%= emp.id %></th>
+                            <td><%= emp.fname%></td>
+                            <td><%= emp.lname %></td>
+                            <td><%= emp.email %></td>
+                            <td><%= emp.gender %></td>
+                            <td><%= user.fname %>  <%= user.lname %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    <% if ( mng.length!=0 && user.table == 'admin') {%>
+        <% if (emps.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <!-- <th scope="col">Image</th> -->
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Manager Name</th>
+                        <!-- <th scope="col">Action</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <% emps.forEach((emp, index) => { %>
+                        <% for(var key in emp) { %>
+                            <% if(key == emp.length-1) { %>
+                            <% return ;%>
+                           <% } %>
+                            <tr>
+                            <th scope="row"><%= emp[key]['id'] %></th>
+                            <td><%= emp[key]['fname'] %></td>
+                            <td><%= emp[key]['lname'] %></td>
+                            <td><%= emp[key]['email'] %></td>
+                            <td><%= emp[key]['gender'] %></td>
+                            <td><%= emp[emp.length-1].firstname %> <%= emp[emp.length-1].lastname %></td>
+                           </tr>
+                        <% } %>
+                            
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    <% } %>
+       <% if(mng.length == 0) { %>
+            <p class="text-center">No mng found. Go <a href="/dashboard" >here</a> Add Employee</p>
+        <% } %>
+    </div>
+</div>

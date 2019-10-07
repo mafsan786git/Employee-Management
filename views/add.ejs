@@ -1,0 +1,74 @@
+<% include dashboard.ejs %>
+
+
+<style>
+        @media screen and (min-width:600px) {
+            .container {
+                width: 55%;
+            }
+        }
+        .container{
+            position: relative;
+        }
+</style>
+<div class="container" style="border: solid black;">                                                
+        <hr>
+        <h4 class="form-text text-muted alert alert-danger">This is for to ADD Employee.</h4>
+        <hr>
+        <% include ./partials/messages %>
+        <hr>
+        <% if(user.table == 'admin') { %>
+        <form id="form_id" action="/admin/add" name="myform" method="POST" class="was-validated">
+           
+                    <div class="form-group">
+                            <label><strong>Category</strong></label>
+                            <select class="form-control" id="category_id" name="sellist" required>
+                                <option disabled selected value>select an option</option>
+                                <option value="manager">Manager</option>
+                                <option value="user">User</option>
+                            </select>
+                    </div>
+            <% }%>
+            <% if(user.table == 'manager') { %>
+                <form id="form_id" action="/manager/add" name="myform" method="POST" class="was-validated">
+            <% } %>
+            <div class="form-group">
+                <label for=""><strong>First Name</strong></label>
+                <input type="text" class="form-control form-control-sm" id="firstname" name="fname" placeholder="enter your first name" required>
+            </div>
+            <div class="form-group">
+                <label for=""><strong>Last Name</strong></label>
+                <input type="text" class="form-control form-control-sm" id="lastname" name="lname" placeholder="enter your last name" required>
+            </div>
+            <div class="form-group">
+                <label><strong>Email</strong></label>
+                <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="enter your email name" required>
+                <small id="emailhelp" class="form-text text-muted alert alert-info">THIS EMAIL WILL BE EMPLOYEE USERNAME</small>
+            </div>
+            <div class="form-group">
+                <label><strong>Gender</strong></label>
+                <br>
+                <div>
+                    <div class="form-check form-check-inline" style="padding: 2px">
+                        <input type="radio" class="form-check-input" id="radiomale" name="gender" value="male" required>
+                        <label class="form-check-lable" for="radiomale">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline" style="padding: 2px">
+                        <input type="radio" class="form-check-input" id="radiofemale" name="gender" value="female" required>
+                        <label class="form-check-lable" for="radiofemale">Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pwd"><strong>New Password</strong></label>
+                <input type="password" id="npwd" class="form-control form-control-sm" name="password" placeholder="enter your new password" required>
+            </div>
+            <div class="form-group">
+                <label for="cpwd"><strong>Confirm Password</strong></label>
+                <input type="password" id="cpwd" class="form-control form-control-sm" name="password2" placeholder="enter your current password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="add" class="btn btn-primary" style="width: 100%">ADD EMPLOYEE</button>
+            </div>
+        </form>
+</div>

@@ -1,0 +1,57 @@
+<% include dashboard.ejs %>
+<style>
+    @media screen and (min-width: 700px){
+        #profile{
+            width: 40%;
+            border: solid black 1px;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    } 
+    #profile{
+            border: solid black 1px;
+            border-radius: 5px;
+            padding: 10px;
+            box-align: center;
+
+    }
+
+</style>
+ <form>
+    <div class="container mt-4" id="profile" >
+        <div class="form-group">
+            <h1 class="d-flex justify-content-center"><strong>Profile</strong></h1>
+        </div>
+        <div class="form-group">
+            <label for="firstname"><strong>First Name</strong></label>
+            <input type="text" class="form-control form-control-md" id="firstname" name="fname" readonly placeholder=<%= user.fname %>>
+        </div>
+        <div class="form-group">
+            <label for=""><strong>Last Name</strong></label>
+            <input type="text" class="form-control form-control-md" id="lastname" name="lname" readonly placeholder=<%= user.lname %> >
+        </div>
+        <div class="form-group">
+            <label><strong>Email</strong></label>
+            <input type="email" class="form-control form-control-md" id="email" name="email" readonly placeholder=<%= user.email %> >
+        </div>
+        <div class="form-group">
+            <label><strong>Gender</strong></label>
+            <input type="text" class="form-control form-control-md" id="radiomale" name="gender" readonly placeholder=<%= user.gender %>>
+        </div>
+        <% if(user.table == 'user') { %>
+        <div class="form-group">
+            <label><strong>Manager</strong></label>
+            <input type="text" class="form-control form-control-md" id="radiomale" name="bossname" readonly placeholder=<%=managerName.fname %>>
+        </div>
+        <% } %>
+        <% if(user.table == 'manager') { %>
+            <div class="form-group">
+                <label><strong>Admin</strong></label>
+                <input type="text" class="form-control form-control-md" id="radiomale" name="bossname" readonly placeholder=<%=managerName.fname %>>
+            </div>
+            <% } %>
+    </div>
+</form>
+
+
+
